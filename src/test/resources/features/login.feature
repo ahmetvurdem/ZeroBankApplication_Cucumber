@@ -1,3 +1,4 @@
+@wip
 Feature: User should be able to login with valid credentials
 
     Scenario: Login as authorized

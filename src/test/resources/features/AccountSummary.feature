@@ -1,6 +1,7 @@
+@wip
 Feature: Check specific column in Account Summary Page
 
-  @wip
+
   Scenario: Account Summary Page
     Given the user is logged in
     When user click on Account Summary Page link
