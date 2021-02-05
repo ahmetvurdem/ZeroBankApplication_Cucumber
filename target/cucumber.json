@@ -1,0 +1,100 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2021-02-04T16:04:05.432Z",
+        "before": [
+          {
+            "result": {
+              "duration": 604000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.zerobank.step_definitions.Hooks.setUp()"
+            }
+          }
+        ],
+        "line": 4,
+        "name": "Savings account redirect",
+        "description": "",
+        "id": "navigating-to-specific-accounts-in-accounts-activity;savings-account-redirect",
+        "after": [
+          {
+            "result": {
+              "duration": 86927000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.zerobank.step_definitions.Hooks.tearDown(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 10222065000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "the user is logged in",
+            "match": {
+              "location": "com.zerobank.step_definitions.LoginStepDefs.the_user_is_logged_in()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "error_message": "io.cucumber.java.PendingException: TODO: implement me\n\tat com.zerobank.step_definitions.LoginStepDefs.the_user_clicks_on_Savings_link_on_the_Account_Summary_page(LoginStepDefs.java:31)\n\tat ✽.the user clicks on Savings link on the Account Summary page(file:///Users/ahmetvurdem/IdeaProjects/ZeroBankApplication_Cucumber/src/test/resources/features/AccountActivityNavigation.feature:6)\n",
+              "duration": 2265000,
+              "status": "pending"
+            },
+            "line": 6,
+            "name": "the user clicks on Savings link on the Account Summary page",
+            "match": {
+              "location": "com.zerobank.step_definitions.LoginStepDefs.the_user_clicks_on_Savings_link_on_the_Account_Summary_page()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 722000,
+              "status": "skipped"
+            },
+            "line": 7,
+            "name": "the Account Activity page should be displayed",
+            "match": {
+              "location": "com.zerobank.step_definitions.LoginStepDefs.the_Account_Activity_page_should_be_displayed()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 477000,
+              "status": "skipped"
+            },
+            "line": 8,
+            "name": "Account drop down should have Savings selected",
+            "match": {
+              "location": "com.zerobank.step_definitions.LoginStepDefs.account_drop_down_should_have_Savings_selected()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@wip"
+          }
+        ]
+      }
+    ],
+    "name": "Navigating to specific accounts in Accounts Activity",
+    "description": "",
+    "id": "navigating-to-specific-accounts-in-accounts-activity",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/AccountActivityNavigation.feature",
+    "tags": []
+  }
+]
