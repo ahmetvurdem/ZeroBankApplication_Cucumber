@@ -1,5 +1,6 @@
 package com.zerobank.pages;
 
+import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -41,6 +42,13 @@ public class PayBillsPage extends BasePage{
     @FindBy (id = "pc_currency")
     public WebElement currencyDropDown;
 
+    @FindBy (id = "pc_amount")
+    public WebElement amount;
+
+    @FindBy (id = "purchase_cash")
+    public WebElement purchaseButton;
+
+
 
     public void addPayee(String payeeNameStr, String payeeAddressStr, String accountStr, String payeeDetailsStr){
         payeeNameInputBox.sendKeys(payeeNameStr);
@@ -50,9 +58,11 @@ public class PayBillsPage extends BasePage{
         addButton.click();
     }
 
-    public void allCurrencyDropDownElements(){
+    public List<String> allCurrencyDropDownElements(){
         Select stateDropdown = new Select(currencyDropDown);
         List<WebElement> currencyOptions = stateDropdown.getOptions();
+        List<String> elementsText = BrowserUtils.getElementsText(currencyOptions);
+        return elementsText;
     }
 
 

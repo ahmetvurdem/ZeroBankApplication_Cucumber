@@ -3,9 +3,14 @@ package com.zerobank.step_definitions;
 import com.zerobank.pages.OnlineBankingPage;
 import com.zerobank.pages.PayBillsPage;
 import com.zerobank.utilities.BrowserUtils;
+import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.Map;
@@ -33,13 +38,38 @@ public class PayBillPageStepDefs{
 
     @Given("the user accesses the Purchase foreign currency cash tab")
     public void the_user_accesses_the_Purchase_foreign_currency_cash_tab() {
+        new OnlineBankingPage().payBills.click();
+        BrowserUtils.waitFor(2);
         new PayBillsPage().purchaseForeignCurrencyTab.click();
     }
 
     @Then("following currencies should be available")
     public void following_currencies_should_be_available(List<String> currencyDropDown) {
+        BrowserUtils.waitFor(3);
+        new PayBillsPage().allCurrencyDropDownElements().contains(currencyDropDown);
+    }
+
+    @When("user tries to calculate cost without entering a value")
+    public void user_tries_to_calculate_cost_without_entering_a_value() {
+        BrowserUtils.waitFor(3);
+        new Select(new PayBillsPage().currencyDropDown).selectByIndex(3);
+        new PayBillsPage().purchaseButton.click();
+    }
+
+    @When("user tries to calculate cost without selecting a currency")
+    public void user_tries_to_calculate_cost_without_selecting_a_currency() {
+        BrowserUtils.waitFor(3);
+        new PayBillsPage().amount.sendKeys("100");
+        new PayBillsPage().purchaseButton.click();
+    }
+
+    @Then("error message should be displayed")
+    public void error_message_should_be_displayed() {
+        BrowserUtils.waitFor(3);
+        Alert alert = Driver.get().switchTo().alert();
+        Assert.assertFalse(alert.getText().isEmpty());
 
     }
 
-
 }
+

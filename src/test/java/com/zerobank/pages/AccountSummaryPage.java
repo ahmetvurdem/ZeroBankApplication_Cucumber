@@ -10,6 +10,7 @@ public class AccountSummaryPage extends BasePage{
     public AccountSummaryPage() {
         PageFactory.initElements(Driver.get(), this);
     }
+
     @FindBy (xpath = "//*[text()='Savings']")
     public WebElement savingsLink;
 
