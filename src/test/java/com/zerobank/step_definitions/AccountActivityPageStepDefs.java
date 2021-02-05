@@ -16,9 +16,6 @@ public class AccountActivityPageStepDefs {
         System.out.println("title = " + title);
     }
 
-
-
-
     @And("Account drop down should have Savings selected")
     public void account_drop_down_should_have_Savings_selected() {
         String expectedSelected = "Savings";
@@ -28,28 +25,20 @@ public class AccountActivityPageStepDefs {
         Assert.assertEquals(expectedSelected,actualSelected);
     }
 
-
-
     @And("Account drop down should have Brokerage selected")
     public void account_drop_down_should_have_Brokerage_selected() {
         Assert.assertEquals("Brokerage", new AccountActivityPage().getFirtSelectedOptions());
     }
-
-
 
     @And("Account drop down should have Checking selected")
     public void account_drop_down_should_have_Checking_selected() {
         Assert.assertEquals("Checking", new AccountActivityPage().getFirtSelectedOptions());
     }
 
-
-
     @And("Account drop down should have Credit Card selected")
     public void account_drop_down_should_have_Credit_Card_selected() {
         Assert.assertEquals("Credit Card", new AccountActivityPage().getFirtSelectedOptions());
     }
-
-
 
     @And("Account drop down should have Loan selected")
     public void account_drop_down_should_have_Loan_selected() {

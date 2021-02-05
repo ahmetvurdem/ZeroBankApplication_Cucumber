@@ -1,5 +1,6 @@
 package com.zerobank.step_definitions;
 
+import com.zerobank.pages.LoginPage;
 import com.zerobank.pages.OnlineBankingPage;
 import com.zerobank.pages.PayBillsPage;
 import com.zerobank.utilities.BrowserUtils;
@@ -20,6 +21,7 @@ public class PayBillPageStepDefs{
 
     @Given("Add New Payee tab")
     public void add_New_Payee_tab() {
+        new LoginPage().logInMethod();
         new OnlineBankingPage().payBills.click();
         BrowserUtils.waitFor(2);
         new PayBillsPage().addNewPayee.click();
@@ -38,6 +40,7 @@ public class PayBillPageStepDefs{
 
     @Given("the user accesses the Purchase foreign currency cash tab")
     public void the_user_accesses_the_Purchase_foreign_currency_cash_tab() {
+        new LoginPage().logInMethod();
         new OnlineBankingPage().payBills.click();
         BrowserUtils.waitFor(2);
         new PayBillsPage().purchaseForeignCurrencyTab.click();

@@ -1,5 +1,7 @@
 package com.zerobank.pages;
 
+import com.zerobank.utilities.BrowserUtils;
+import com.zerobank.utilities.ConfigurationReader;
 import com.zerobank.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,6 +42,19 @@ public class LoginPage extends BasePage{
         userNameInputBox.sendKeys(username);
         passwordInputBox.sendKeys(password);
         signInButton.click();
+    }
+
+    public void logInMethod(){
+        String url = ConfigurationReader.get("url");
+        Driver.get().get(url);
+        new LoginPage().firstSignInButton.click();
+        BrowserUtils.waitFor(2);
+        String username= ConfigurationReader.get("username");
+        String password = ConfigurationReader.get("password");
+        new LoginPage().logIn(username,password);
+        new LoginPage().backToSafety.click();
+        BrowserUtils.waitFor(2);
+        new LoginPage().onlineBanking.click();
     }
 
 

@@ -14,16 +14,6 @@ public class Hooks {
 
     @Before
     public void setUp(){
-        String url = ConfigurationReader.get("url");
-        Driver.get().get(url);
-        new LoginPage().firstSignInButton.click();
-        BrowserUtils.waitFor(2);
-        String username= ConfigurationReader.get("username");
-        String password = ConfigurationReader.get("password");
-        new LoginPage().logIn(username,password);
-        new LoginPage().backToSafety.click();
-        BrowserUtils.waitFor(2);
-        new LoginPage().onlineBanking.click();
     }
 
     @After
