@@ -8,7 +8,7 @@ Feature: Pay Bills
       | Date   | 2021-02-02 |
     Then The payment was successfully submitted message is displayed
 
-  @wip
+
   Scenario: Failed Pay operation
     Given the user is logged in
     Then Pay Bills page should be "Zero - Pay Bills" displayed
@@ -16,7 +16,7 @@ Feature: Pay Bills
       | Date   | 2021-02-02 |
     Then The payment was failed and fail message is displayed on amount input box
 
-    @wip
+
   Scenario: Failed Pay operation
     Given the user is logged in
     Then Pay Bills page should be "Zero - Pay Bills" displayed
