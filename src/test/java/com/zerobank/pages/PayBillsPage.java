@@ -61,8 +61,6 @@ public class PayBillsPage extends BasePage{
     public WebElement successfulMessage;
 
 
-
-
     public void addPayee(String payeeNameStr, String payeeAddressStr, String accountStr, String payeeDetailsStr){
         payeeNameInputBox.sendKeys(payeeNameStr);
         payeeAddressInputBox.sendKeys(payeeAddressStr);
@@ -80,6 +78,16 @@ public class PayBillsPage extends BasePage{
 
     public void paySavedPee(String amount, String date){
         amountInputBox.sendKeys(amount);
+        dateInputBox.sendKeys(date);
+        payButton.click();
+    }
+
+    public void sendAmountInput(String amount){
+        amountInputBox.sendKeys(amount);
+        payButton.click();
+    }
+
+    public void sendDateInput(String date){
         dateInputBox.sendKeys(date);
         payButton.click();
     }

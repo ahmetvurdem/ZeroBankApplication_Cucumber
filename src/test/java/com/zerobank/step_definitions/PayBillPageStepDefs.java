@@ -13,6 +13,7 @@ import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.Select;
 
+import java.net.PasswordAuthentication;
 import java.util.List;
 import java.util.Map;
 
@@ -92,6 +93,32 @@ public class PayBillPageStepDefs{
         BrowserUtils.waitFor(1);
         Assert.assertTrue(new PayBillsPage().successfulMessage.isDisplayed());
     }
+
+    @When("user tries to make a payment without entering the amount")
+    public void user_tries_to_make_a_payment_without_entering_the_amount(Map<String,String> inputs) {
+      new PayBillsPage().sendDateInput(inputs.get("Date"));
+    }
+
+    @When("user tries to make a payment without entering the date")
+    public void user_tries_to_make_a_payment_without_entering_the_date(Map<String,String> inputs) {
+       new PayBillsPage().sendAmountInput(inputs.get("Amount"));
+    }
+
+    @Then("The payment was failed and fail message is displayed on date input box")
+    public void the_payment_was_failed_and_fail_message_is_displayed_on_date_input_box() {
+        String message = new PayBillsPage().dateInputBox.getAttribute("validationMessage");
+        System.out.println("message = " + message);
+        Assert.assertFalse(message.isEmpty());
+    }
+
+    @Then("The payment was failed and fail message is displayed on amount input box")
+    public void the_payment_was_failed_and_fail_message_is_displayed_on_amount_input_box() {
+        String displayMessage = "Please fill out this field.";
+        String message = new PayBillsPage().amountInputBox.getAttribute("validationMessage");
+        System.out.println("message = " + message);
+        Assert.assertEquals(displayMessage,message);
+    }
+
 
 }
 
