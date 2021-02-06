@@ -41,6 +41,7 @@ public class PayBillPageStepDefs{
     @Given("the user accesses the Purchase foreign currency cash tab")
     public void the_user_accesses_the_Purchase_foreign_currency_cash_tab() {
         new LoginPage().logInMethod();
+        BrowserUtils.waitFor(2);
         new OnlineBankingPage().payBills.click();
         BrowserUtils.waitFor(2);
         new PayBillsPage().purchaseForeignCurrencyTab.click();
@@ -49,7 +50,7 @@ public class PayBillPageStepDefs{
     @Then("following currencies should be available")
     public void following_currencies_should_be_available(List<String> currencyDropDown) {
         BrowserUtils.waitFor(3);
-        new PayBillsPage().allCurrencyDropDownElements().contains(currencyDropDown);
+        new PayBillsPage().allCurrencyDropDownElements().containsAll(currencyDropDown);
     }
 
     @When("user tries to calculate cost without entering a value")

@@ -52,15 +52,21 @@ public class AccountActivityPageStepDefs {
     public void account_activity_page_should_be_displayed(String expectedTitle) {
         BrowserUtils.waitFor(2);
         new LoginPage().accountActivityLink.click();
-        Assert.assertTrue(Driver.get().getTitle().equals(expectedTitle));
+        Assert.assertTrue(Driver.get().getTitle().contains(expectedTitle));
     }
 
     @Then("Account drop down following options")
     public void account_drop_down_following_options(List<String> currentOptions) {
         BrowserUtils.waitFor(2);
+
+        List<String> actualOptions = new AccountActivityPage().allCurrencyDropDownElements();
         System.out.println("new AccountActivityPage().allCurrencyDropDownElements() = " + new AccountActivityPage().allCurrencyDropDownElements());
         System.out.println("currentOptions = " + currentOptions);
-        new AccountActivityPage().allCurrencyDropDownElements().contains(currentOptions);
+
+//        Assert.assertEquals(currentOptions,actualOptions);
+        Assert.assertTrue(actualOptions.containsAll(currentOptions));
+
+
     }
 
     @Then("Transactions table column names")
