@@ -48,6 +48,19 @@ public class PayBillsPage extends BasePage{
     @FindBy (id = "purchase_cash")
     public WebElement purchaseButton;
 
+    @FindBy (id = "sp_amount")
+    public WebElement amountInputBox;
+
+    @FindBy(id = "sp_date")
+    public WebElement dateInputBox;
+
+    @FindBy (id = "pay_saved_payees")
+    public WebElement payButton;
+
+    @FindBy (id = "alert_content")
+    public WebElement successfulMessage;
+
+
 
 
     public void addPayee(String payeeNameStr, String payeeAddressStr, String accountStr, String payeeDetailsStr){
@@ -63,6 +76,12 @@ public class PayBillsPage extends BasePage{
         List<WebElement> currencyOptions = stateDropdown.getOptions();
         List<String> elementsText = BrowserUtils.getElementsText(currencyOptions);
         return elementsText;
+    }
+
+    public void paySavedPee(String amount, String date){
+        amountInputBox.sendKeys(amount);
+        dateInputBox.sendKeys(date);
+        payButton.click();
     }
 
 

@@ -72,7 +72,25 @@ public class PayBillPageStepDefs{
         BrowserUtils.waitFor(3);
         Alert alert = Driver.get().switchTo().alert();
         Assert.assertFalse(alert.getText().isEmpty());
+    }
 
+    @Then("Pay Bills page should be {string} displayed")
+    public void pay_Bills_page_should_be_displayed(String zeroPayBillsTitle) {
+        BrowserUtils.waitFor(2);
+        new OnlineBankingPage().payBills.click();
+        String actualPayBillsTitle = Driver.get().getTitle();
+        Assert.assertEquals(zeroPayBillsTitle,actualPayBillsTitle);
+    }
+
+    @When("user completes a successful Pay operation")
+    public void user_completes_a_successful_Pay_operation(Map<String,String> payeeInfo) {
+        new PayBillsPage().paySavedPee(payeeInfo.get("Amount") , payeeInfo.get("Date"));
+    }
+
+    @Then("The payment was successfully submitted message is displayed")
+    public void the_payment_was_successfully_submitted_message_is_displayed() {
+        BrowserUtils.waitFor(1);
+        Assert.assertTrue(new PayBillsPage().successfulMessage.isDisplayed());
     }
 
 }

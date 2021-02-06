@@ -60,10 +60,10 @@ public class AccountActivityPageStepDefs {
         BrowserUtils.waitFor(2);
 
         List<String> actualOptions = new AccountActivityPage().allCurrencyDropDownElements();
+
         System.out.println("new AccountActivityPage().allCurrencyDropDownElements() = " + new AccountActivityPage().allCurrencyDropDownElements());
         System.out.println("currentOptions = " + currentOptions);
 
-//        Assert.assertEquals(currentOptions,actualOptions);
         Assert.assertTrue(actualOptions.containsAll(currentOptions));
 
 
