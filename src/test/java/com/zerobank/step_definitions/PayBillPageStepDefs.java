@@ -81,11 +81,13 @@ public class PayBillPageStepDefs{
         new OnlineBankingPage().payBills.click();
         String actualPayBillsTitle = Driver.get().getTitle();
         Assert.assertEquals(zeroPayBillsTitle,actualPayBillsTitle);
+        BrowserUtils.waitFor(2);
     }
 
     @When("user completes a successful Pay operation")
     public void user_completes_a_successful_Pay_operation(Map<String,String> payeeInfo) {
         new PayBillsPage().paySavedPee(payeeInfo.get("Amount") , payeeInfo.get("Date"));
+        BrowserUtils.waitFor(2);
     }
 
     @Then("The payment was successfully submitted message is displayed")

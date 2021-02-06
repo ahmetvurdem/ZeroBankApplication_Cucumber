@@ -1,5 +1,5 @@
 Feature: Pay Bills
-  @wip
+
   Scenario: successful Pay operation
     Given the user is logged in
     Then Pay Bills page should be "Zero - Pay Bills" displayed
@@ -23,6 +23,7 @@ Feature: Pay Bills
     When user tries to make a payment without entering the date
       | Amount | 100        |
     Then The payment was failed and fail message is displayed on date input box
+
 
 
 
