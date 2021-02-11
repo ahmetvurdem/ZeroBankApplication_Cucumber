@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -99,6 +100,8 @@ public class AccountActivityPageStepDefs {
 
     @When("the user enters description {string}")
     public void the_user_enters_description(String online) {
+        BrowserUtils.waitFor(2);
+        new AccountActivityPage().descriptionInputBox.clear();
         new AccountActivityPage().descriptionInputBox.sendKeys(online);
         BrowserUtils.waitFor(2);
     }
@@ -107,6 +110,18 @@ public class AccountActivityPageStepDefs {
     public void the_user_enters_date_range_from_to(String startDate, String finishDate) {
         new AccountActivityPage().startDate.sendKeys(startDate);
         new AccountActivityPage().finishDate.sendKeys(finishDate);
+    }
+
+    @When("user selects type {string}")
+    public void user_selects_type(String type) {
+        Select stateDropdown = new Select(new AccountActivityPage().typeDropDown);
+        stateDropdown.selectByVisibleText(type);
+        BrowserUtils.waitFor(2);
+    }
+
+    @Then("results table should only show descriptions containing {string}")
+    public void results_table_should_only_show_descriptions_containing(String online) {
+        new AccountActivityPage().allDescriptionColumn(online);
     }
 
 }

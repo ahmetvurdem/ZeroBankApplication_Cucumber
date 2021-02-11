@@ -2,6 +2,8 @@ package com.zerobank.pages;
 
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -36,6 +38,12 @@ public class AccountActivityPage extends BasePage{
     @FindBy (id = "aa_toDate")
     public WebElement finishDate;
 
+    @FindBy (id = "aa_type")
+    public WebElement typeDropDown;
+
+    @FindBy (xpath = "//div[@id='filtered_transactions_for_account']//tbody/tr/td[2]")
+    public WebElement descriptionColumn;
+
 
     public String getFirtSelectedOptions(){
         Select stateDropdown = new Select(accountDropDown);
@@ -45,7 +53,15 @@ public class AccountActivityPage extends BasePage{
     public List<String> allCurrencyDropDownElements(){
         Select stateDropdown = new Select(accountDropDown);
         List<WebElement> currencyOptions = stateDropdown.getOptions();
-        List<String> elementsText = BrowserUtils.getElementsText(currencyOptions);
-        return elementsText;
+        return BrowserUtils.getElementsText(currencyOptions);
+    }
+
+    public void allDescriptionColumn(String param){
+        BrowserUtils.waitFor(2);
+        List<WebElement> elements = Driver.get().findElements(By.xpath("//div[@id='filtered_transactions_for_account']//tbody/tr/td[2]"));
+        for (WebElement element : elements) {
+            System.out.println(element.getText());
+            Assert.assertTrue(element.getText().contains(param));
+        }
     }
 }
