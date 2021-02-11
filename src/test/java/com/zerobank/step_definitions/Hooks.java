@@ -7,10 +7,13 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+import java.util.concurrent.TimeUnit;
+
 public class Hooks {
 
     @Before
     public void setUp(){
+        Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @After
@@ -21,7 +24,6 @@ public class Hooks {
         }
         Driver.closeDriver();
     }
-
 
     @Before("@db")
     public void setUpdb(){

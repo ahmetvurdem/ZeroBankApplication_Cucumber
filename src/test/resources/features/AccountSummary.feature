@@ -1,3 +1,4 @@
+@smoke
 
 Feature: Check specific column in Account Summary Page
 

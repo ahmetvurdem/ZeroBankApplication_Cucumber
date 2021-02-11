@@ -63,6 +63,8 @@ public class LoginStepDefs{
     @Then("login error message should be displayed")
     public void login_error_message_should_be_displayed() {
         Assert.assertTrue(new LoginPage().errorMessage.isDisplayed());
+        System.out.println("new LoginPage().errorMessage.getText() = " + new LoginPage().errorMessage.getText());
+
     }
 
 

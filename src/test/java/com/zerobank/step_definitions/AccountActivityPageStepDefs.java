@@ -4,7 +4,9 @@ import com.zerobank.pages.*;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import java.util.List;
@@ -66,8 +68,6 @@ public class AccountActivityPageStepDefs {
         System.out.println("currentOptions = " + currentOptions);
 
         Assert.assertTrue(actualOptions.containsAll(currentOptions));
-
-
     }
 
     @Then("Transactions table column names")
@@ -76,13 +76,37 @@ public class AccountActivityPageStepDefs {
         List<String> actualAccountActivityHeader = BrowserUtils.getElementsText(new AccountActivityPage().actualAccountActivityHead);
         Assert.assertEquals( accountActivityHeader,actualAccountActivityHeader);
         System.out.println("accountActivityHeader = " + accountActivityHeader);
+        System.out.println("BrowserUtils.getElementsText(new AccountActivityPage().actualAccountActivityHead) = " + BrowserUtils.getElementsText(new AccountActivityPage().actualAccountActivityHead));
     }
-
-
 
     @Then("Account drop down should have {string} selected")
     public void account_drop_down_should_have_selected(String selectedDropdown) {
         Assert.assertEquals(selectedDropdown, new AccountActivityPage().getFirtSelectedOptions());
-
     }
+
+    @Given("the user accesses the Find Transactions tab")
+    public void the_user_accesses_the_Find_Transactions_tab() {
+        new LoginPage().logInMethod();
+        new LoginPage().accountActivityLink.click();
+        new AccountActivityPage().findTransactionsTab.click();
+        BrowserUtils.waitFor(3);
+    }
+
+    @Given("clicks search")
+    public void clicks_search() {
+        new AccountActivityPage().clickButton.click();
+    }
+
+    @When("the user enters description {string}")
+    public void the_user_enters_description(String online) {
+        new AccountActivityPage().descriptionInputBox.sendKeys(online);
+        BrowserUtils.waitFor(2);
+    }
+
+    @When("the user enters date range from {string} to {string}")
+    public void the_user_enters_date_range_from_to(String startDate, String finishDate) {
+        new AccountActivityPage().startDate.sendKeys(startDate);
+        new AccountActivityPage().finishDate.sendKeys(finishDate);
+    }
+
 }

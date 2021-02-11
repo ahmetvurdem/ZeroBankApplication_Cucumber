@@ -1,5 +1,5 @@
 Feature: Account activity
-@wip
+@smoke
   Scenario: Account activity page
     Given the user is logged in
     Then Account activity page should be "Zero - Account Activity" displayed

@@ -1,3 +1,5 @@
+@smoke
+
 Feature: Pay Bills
 
   Scenario: successful Pay operation

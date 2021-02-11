@@ -21,6 +21,22 @@ public class AccountActivityPage extends BasePage{
     @FindBy (id = "aa_accountId")
     public WebElement accountDropDown;
 
+    @FindBy(xpath = "//a[.='Find Transactions']")
+    public WebElement findTransactionsTab;
+
+    @FindBy(xpath = "//button[@class = 'btn btn-primary']")
+    public WebElement clickButton;
+
+    @FindBy(id = "aa_description")
+    public WebElement descriptionInputBox;
+
+    @FindBy (id = "aa_fromDate")
+    public WebElement startDate;
+
+    @FindBy (id = "aa_toDate")
+    public WebElement finishDate;
+
+
     public String getFirtSelectedOptions(){
         Select stateDropdown = new Select(accountDropDown);
         return stateDropdown.getFirstSelectedOption().getText();
