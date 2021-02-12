@@ -42,7 +42,16 @@ public class AccountActivityPage extends BasePage{
     public WebElement typeDropDown;
 
     @FindBy (xpath = "//div[@id='filtered_transactions_for_account']//tbody/tr/td[2]")
-    public WebElement descriptionColumn;
+    public List<WebElement> descriptionColumn;
+
+    @FindBy (xpath = "//div[@id='filtered_transactions_for_account']//tbody/tr/td[3]")
+    public List<WebElement> depositColumn;
+
+    @FindBy (xpath = "//div[@id='filtered_transactions_for_account']//tbody/tr/td[4]")
+    public List<WebElement> withdrawColumn;
+
+
+
 
 
     public String getFirtSelectedOptions(){
@@ -58,10 +67,55 @@ public class AccountActivityPage extends BasePage{
 
     public void allDescriptionColumn(String param){
         BrowserUtils.waitFor(2);
-        List<WebElement> elements = Driver.get().findElements(By.xpath("//div[@id='filtered_transactions_for_account']//tbody/tr/td[2]"));
+        List<WebElement> elements = descriptionColumn;
         for (WebElement element : elements) {
             System.out.println(element.getText());
             Assert.assertTrue(element.getText().contains(param));
         }
+    }
+
+    public void allDepositColumnsEmpty(){
+        BrowserUtils.waitFor(2);
+        List<WebElement> elements = depositColumn;
+        for (WebElement element : elements) {
+            Assert.assertTrue(element.getText().isEmpty());
+        }
+    }
+
+    public void allWithdrawalColumnsEmpty(){
+        BrowserUtils.waitFor(2);
+        List<WebElement> elements = withdrawColumn;
+        for (WebElement element : elements) {
+            Assert.assertTrue(element.getText().isEmpty());
+        }
+    }
+
+    public void atLeastOneResultUnderDeposit(){
+        BrowserUtils.waitFor(2);
+        List<WebElement> elements = depositColumn;
+        String dummy ="";
+        for (WebElement element : elements) {
+            if (element.getText().isEmpty()){
+
+            }else{
+                dummy = element.getText();
+            }
+        }
+
+        Assert.assertFalse(dummy.isEmpty());
+    }
+
+    public void atLeastOneResultUnderWithdraw(){
+        BrowserUtils.waitFor(2);
+        List<WebElement> elements = withdrawColumn;
+        String dummy ="";
+        for (WebElement element : elements) {
+            if (element.getText().isEmpty()){
+
+            }else{
+                dummy = element.getText();
+            }
+        }
+        Assert.assertFalse(dummy.isEmpty());
     }
 }

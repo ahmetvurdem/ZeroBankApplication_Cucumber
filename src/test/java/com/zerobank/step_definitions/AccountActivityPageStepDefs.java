@@ -3,6 +3,7 @@ package com.zerobank.step_definitions;
 import com.zerobank.pages.*;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -117,11 +118,36 @@ public class AccountActivityPageStepDefs {
         Select stateDropdown = new Select(new AccountActivityPage().typeDropDown);
         stateDropdown.selectByVisibleText(type);
         BrowserUtils.waitFor(2);
+        new AccountActivityPage().clickButton.click();
     }
 
     @Then("results table should only show descriptions containing {string}")
     public void results_table_should_only_show_descriptions_containing(String online) {
         new AccountActivityPage().allDescriptionColumn(online);
+    }
+
+    @Then("results table should show no result under {string}")
+    public void results_table_should_show_no_result_under(String header) {
+       switch (header){
+           case "Deposit":
+            new AccountActivityPage().allDepositColumnsEmpty();
+               break;
+           case "Withdrawal":
+            new AccountActivityPage().allWithdrawalColumnsEmpty();
+               break;
+       }
+    }
+
+    @Then("results table should show at least one result under {string}")
+    public void results_table_should_show_at_least_one_result_under(String header) {
+        switch (header){
+            case "Deposit":
+                new AccountActivityPage().atLeastOneResultUnderDeposit();
+                break;
+            case "Withdrawal":
+                new AccountActivityPage().atLeastOneResultUnderWithdraw();
+                break;
+        }
     }
 
 }
