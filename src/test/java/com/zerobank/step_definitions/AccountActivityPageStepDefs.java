@@ -126,6 +126,11 @@ public class AccountActivityPageStepDefs {
         new AccountActivityPage().allDescriptionColumn(online);
     }
 
+    @Then("results table should not show descriptions containing {string}")
+    public void results_table_should_not_show_descriptions_containing(String type) {
+        new AccountActivityPage().notContainsDescriptionColumn(type);
+    }
+
     @Then("results table should show no result under {string}")
     public void results_table_should_show_no_result_under(String header) {
        switch (header){

@@ -74,6 +74,15 @@ public class AccountActivityPage extends BasePage{
         }
     }
 
+    public void notContainsDescriptionColumn(String param){
+        BrowserUtils.waitFor(2);
+        List<WebElement> elements = descriptionColumn;
+        for (WebElement element : elements) {
+            System.out.println(element.getText());
+            Assert.assertFalse(element.getText().contains(param));
+        }
+    }
+
     public void allDepositColumnsEmpty(){
         BrowserUtils.waitFor(2);
         List<WebElement> elements = depositColumn;
