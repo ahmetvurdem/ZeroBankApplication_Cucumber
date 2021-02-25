@@ -92,7 +92,4 @@ public class PayBillsPage extends BasePage{
         payButton.click();
     }
 
-
-
-
 }

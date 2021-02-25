@@ -3,7 +3,6 @@ package com.zerobank.pages;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -50,8 +49,8 @@ public class AccountActivityPage extends BasePage{
     @FindBy (xpath = "//div[@id='filtered_transactions_for_account']//tbody/tr/td[4]")
     public List<WebElement> withdrawColumn;
 
-
-
+    @FindBy (xpath = "//div[@id='filtered_transactions_for_account']//tbody/tr/td[1]")
+    public List<WebElement> dateColumn;
 
 
     public String getFirtSelectedOptions(){
@@ -104,9 +103,7 @@ public class AccountActivityPage extends BasePage{
         List<WebElement> elements = depositColumn;
         String dummy ="";
         for (WebElement element : elements) {
-            if (element.getText().isEmpty()){
-
-            }else{
+            if (!element.getText().isEmpty()){
                 dummy = element.getText();
             }
         }

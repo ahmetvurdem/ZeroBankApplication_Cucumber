@@ -1,7 +1,5 @@
 @smoke
-
 Feature: Check specific column in Account Summary Page
-
 
   Scenario: Account Summary Page
     Given the user is logged in

@@ -13,7 +13,6 @@ import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.ui.Select;
 
-import java.net.PasswordAuthentication;
 import java.util.List;
 import java.util.Map;
 
